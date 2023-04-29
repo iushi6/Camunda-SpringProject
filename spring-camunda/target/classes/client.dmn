@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_1ty5s4a" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.10.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.19.0">
+  <decision id="Decision_072pxyq" name="Decision 1">
+    <decisionTable id="DecisionTable_1mfdeh8">
+      <input id="Input_1" label="Name" camunda:inputVariable="userName">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+        <inputValues id="UnaryTests_07rgosk">
+          <text>"Ayushi","Myra","Krishna","John"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0lhu20q" label="Place">
+        <inputExpression id="LiteralExpression_1t02fug" typeRef="string">
+          <text></text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1c9qrrw">
+          <text>"Mumbai","Indore","Delhi","Pune"</text>
+        </inputValues>
+      </input>
+      <output id="Output_1" label="Responsible Person" typeRef="string">
+        <outputValues id="UnaryTests_1jk668v">
+          <text>"Rohit","Ravi","Daksh","Sanjay"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_0b0da8d">
+        <inputEntry id="UnaryTests_1vb5hrv">
+          <text>"Ayushi"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v5u2rt">
+          <text>"Pune"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0w19b8a">
+          <text>"Daksh"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_172fbzf">
+        <inputEntry id="UnaryTests_0ssoyn3">
+          <text>"Myra"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jxbexj">
+          <text>"Pune"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18d3x2o">
+          <text>"Ravi"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vp4ji7">
+        <inputEntry id="UnaryTests_1yhpwab">
+          <text>"John"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07qrgvd">
+          <text>"Indore"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pgehnj">
+          <text>"Rohit"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1d7pu8z">
+        <inputEntry id="UnaryTests_0e5das8">
+          <text>"Krishna"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1blexj4">
+          <text>"Delhi"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15730eb">
+          <text>"Sanjay"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nwtcgg">
+        <inputEntry id="UnaryTests_0r0mey9">
+          <text>"Myra"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f3dqfe">
+          <text>"Mumbai"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0t0aovq">
+          <text>"Rohit"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xsxn30">
+        <inputEntry id="UnaryTests_0ulqmd0">
+          <text>"Ayushi"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eceaj1">
+          <text>"Indore"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_013lgzp">
+          <text>"Ravi"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0baqxw0">
+        <inputEntry id="UnaryTests_0mfyh7j">
+          <text>"Krishna"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oyw3ij">
+          <text>"Pune"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0i20shg">
+          <text>"Daksh"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rvu6sy">
+        <inputEntry id="UnaryTests_1ojn0mx">
+          <text>"John"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pc5e8f">
+          <text>"Mumbai"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10kd9sj">
+          <text>"Sanjay"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08aeum9">
+        <inputEntry id="UnaryTests_0duipzj">
+          <text>"John"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xzosgh">
+          <text>"Delhi"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05x2igo">
+          <text>"Ravi"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_049akin">
+        <inputEntry id="UnaryTests_1c3j6rd">
+          <text>"Ayushi"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a409q1">
+          <text>"Delhi"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11h1p88">
+          <text>"Rohit"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_072pxyq">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
