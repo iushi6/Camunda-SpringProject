@@ -1,38 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0fr9mxs" targetNamespace="http://bpmn.io/schema/bpmn">
-  <bpmn:process id="spring-camunda-process" isExecutable="true">
-    <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>SequenceFlow_1fp17al</bpmn:outgoing>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0fr9mxs" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.10.0">
+  <bpmn:process id="leave-process" name="Employee-Leave-Process" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Employee&#10;Request">
+      <bpmn:outgoing>Flow_0wz47hf</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_1fp17al" sourceRef="StartEvent_1" targetRef="say-hello" />
-    <bpmn:endEvent id="EndEvent_0x6ir2l">
-      <bpmn:incoming>SequenceFlow_16gzt2m</bpmn:incoming>
+    <bpmn:sequenceFlow id="Flow_0wz47hf" sourceRef="StartEvent_1" targetRef="Activity_1nrrrpe" />
+    <bpmn:sequenceFlow id="Flow_0emi0zu" sourceRef="Activity_1nrrrpe" targetRef="manager-task" />
+    <bpmn:sequenceFlow id="Flow_1itqp46" sourceRef="manager-task" targetRef="hr-task" />
+    <bpmn:endEvent id="Event_0owv7qb" name="Employee Result">
+      <bpmn:incoming>Flow_02amqc6</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_16gzt2m" sourceRef="say-hello" targetRef="EndEvent_0x6ir2l" />
-    <bpmn:userTask id="say-hello" name="Say hello to&#10;demo" camunda:candidateUsers="demo">
-      <bpmn:incoming>SequenceFlow_1fp17al</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_16gzt2m</bpmn:outgoing>
+    <bpmn:sequenceFlow id="Flow_02amqc6" sourceRef="hr-task" targetRef="Event_0owv7qb" />
+    <bpmn:serviceTask id="Activity_1nrrrpe" name="LeaveBalanceCheck" camunda:class="com.demo.workflow.LeaveBalanceChecker">
+      <bpmn:incoming>Flow_0wz47hf</bpmn:incoming>
+      <bpmn:outgoing>Flow_0emi0zu</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="manager-task" name="Manager Approval">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="approval" label="approval" type="boolean" defaultValue="false" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0emi0zu</bpmn:incoming>
+      <bpmn:outgoing>Flow_1itqp46</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="hr-task" name="HR Approval">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="approval" label="approval" type="boolean" defaultValue="false" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1itqp46</bpmn:incoming>
+      <bpmn:outgoing>Flow_02amqc6</bpmn:outgoing>
     </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="spring-camunda-process">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="leave-process">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <dc:Bounds x="162" y="82" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="155" y="125" width="50" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_1fp17al_di" bpmnElement="SequenceFlow_1fp17al">
-        <di:waypoint x="215" y="117" />
-        <di:waypoint x="270" y="117" />
+      <bpmndi:BPMNShape id="Event_0owv7qb_di" bpmnElement="Event_0owv7qb">
+        <dc:Bounds x="732" y="82" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="708" y="125" width="85" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1qi91t1_di" bpmnElement="Activity_1nrrrpe">
+        <dc:Bounds x="250" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_19rvh7x_di" bpmnElement="manager-task">
+        <dc:Bounds x="410" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_00fbcwo_di" bpmnElement="hr-task">
+        <dc:Bounds x="570" y="60" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0wz47hf_di" bpmnElement="Flow_0wz47hf">
+        <di:waypoint x="198" y="100" />
+        <di:waypoint x="250" y="100" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="EndEvent_0x6ir2l_di" bpmnElement="EndEvent_0x6ir2l">
-        <dc:Bounds x="432" y="99" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_16gzt2m_di" bpmnElement="SequenceFlow_16gzt2m">
-        <di:waypoint x="370" y="117" />
-        <di:waypoint x="432" y="117" />
+      <bpmndi:BPMNEdge id="Flow_02amqc6_di" bpmnElement="Flow_02amqc6">
+        <di:waypoint x="670" y="100" />
+        <di:waypoint x="732" y="100" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="UserTask_08mft2c_di" bpmnElement="say-hello">
-        <dc:Bounds x="270" y="77" width="100" height="80" />
-      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0emi0zu_di" bpmnElement="Flow_0emi0zu">
+        <di:waypoint x="350" y="100" />
+        <di:waypoint x="410" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1itqp46_di" bpmnElement="Flow_1itqp46">
+        <di:waypoint x="510" y="100" />
+        <di:waypoint x="570" y="100" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
